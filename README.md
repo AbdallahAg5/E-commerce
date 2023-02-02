@@ -1,4 +1,4 @@
-# E-commerce
+# E-commerce  
 
 Tech used :
 
@@ -7,6 +7,8 @@ Tech used :
 - back-end: Expressjs
 - database: MongoDB
 
-for the moment no style .
+#### Project still in progress ....
+
+
 
 

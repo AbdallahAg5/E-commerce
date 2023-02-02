@@ -3,7 +3,7 @@
 Tech used :
 
 - front-end: Reactjs
-- state managment: Redux / Redux/toolkit
+- state management: Redux / Redux/toolkit
 - back-end: Expressjs
 - database: MongoDB
 

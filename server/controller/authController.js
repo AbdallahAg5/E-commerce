@@ -6,19 +6,16 @@ const jwt=require('jsonwebtoken')
 // this  function  takes the user as a parameter and return a jwt for the user created .
 const createToken=(user)=>{
     const payload={
-         id:user._id.toString(),
-         email:user.email
+         id:user[0]._id.toString(),
+         email:user[0].email
     }
-    const token=jwt.sign(payload,process.env.JWS_SECRET)
+    const token=jwt.sign(payload,process.env.JWS_SECRET,{expiresIn:'5h'})
 
     return token
 }
 
-
-module.exports = {
-     
-    // register 
-    post:async(req,res)=>{
+    // register controller
+   const Register=async(req,res)=>{
            // getting the values from the req.body obj + renaming the password (a cause of an err )
           const {fullName,email,password:UserPass}=req.body
           
@@ -45,9 +42,7 @@ module.exports = {
           
           // testing if the user is created successfully
           if (user) {
-            // right here i create the token by executing the function
-             const token=createToken(user)
-             return res.status(200).json({message:'User created',token:token,user:user.sele})
+             return res.status(200).json({message:'User created'})
           }
           else{
             return  res.status(400).json({message:'User not created'})
@@ -56,9 +51,38 @@ module.exports = {
     }
 
 
-}
+
+  // login
+  const Login = async (req, res) => {
+    const { email, password } = req.body;
+
+    // data validation
+    if (!email || !password) {
+      return res.status(400).json({ message: "All Fields Required" });
+    }
+
+    //check existens of the email
+    const getUser = await UserModel.find({email:email})
+    if (getUser.length > 0) {
+     // compare password with hashed one 
+    bcrypt.compare(password,getUser[0].password,(err,response)=>{
+       if (response) {
+        console.log(getUser)
+           // right here i create the token by executing the function
+          const token=createToken(getUser)
+          return  res.json({token:token})
+       } else {
+        return  res.status(401).json({message:'Email/Password Wrong'}) // 401 Unauthorized
+       }
+     })
+
+    }
+    else{
+          return  res.status(404).json({message:'Email/Password Wrong'}) // not found
+    }
+
+  
+} 
 
 
-
-
-
+module.exports= {Register,Login}    

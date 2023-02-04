@@ -1,4 +1,6 @@
 const AdminModel = require("../model/admin_model");
+const jwt=require('jsonwebtoken')
+
 
 module.exports = {
   get: (req, res) => {
@@ -10,10 +12,11 @@ module.exports = {
     try {
       // get the user from db without getting the password
       const admin = await AdminModel.find({ email: email, password: password }).select('-password')
-      console.log(admin)
-      if (admin.length > 0) {
-        
-        res.status(200).redirect("/admin/dashboard");
+      if (admin.length > 0) { 
+          // right here i create the token by executing the function
+          const token=jwt.sign({...admin[0]},process.env.JWS_SECRET,{expiresIn:'5h'})
+          res.cookie('token',token,{httpOnly:true})
+        return res.status(200).redirect("/admin/dashboard");
       } else {
         res.status(200).render("login", { message: "PassWord/Email Wrong" });
       }

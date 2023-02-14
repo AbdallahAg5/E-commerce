@@ -1,0 +1,201 @@
+@import "./includes.scss";
+
+.SignIn_Container {
+    display: flex;
+    justify-content: center;
+    height: calc(100vh - 50px);
+    flex-direction: row;
+    background-color: azure;
+    
+  }
+  
+  .SignIn_Content {
+
+    justify-self: center;
+    border-radius: 20px 0px 0px 20px  ;
+    text-align: center;
+    padding: 15px;
+    width: 300px;
+    height: 400px;
+    background-color: #5f6162;
+    border-right:2px solid $color1 ;
+    backdrop-filter: blur(5px);
+    margin: 50px 0px 0px 10px;
+  }
+  
+  .SignIn {
+    @include font-family;
+    color: $color4;
+    text-decoration: underline;
+    font-size: x-large;
+    margin-top: 10px;
+    
+  }
+  
+  .TextInput {
+    margin-top: 15px;
+    height: 20px;
+    width: 250px;
+    padding-left: 15px;
+    outline: 1px solid $color1;
+    @include font-family;
+  }
+  
+  .TextInput:focus {
+    background-color: $color4;
+  }
+  
+  .TextInput::placeholder {
+    @include font-family;
+  }
+
+  .err{
+    margin-block-start: 1px;
+    margin-block-end: 0px;
+    font-size: 10px;
+    text-align: start;
+    margin-left: 20px;
+    color: rgb(255, 0, 0);
+    @include font-family;
+
+  }
+
+  .globalerrNone{
+      
+      transition: 0.3s;
+      margin-block-start: 1px;
+      margin-block-end: 0px;
+      font-size: 10px;
+      position: absolute;
+      color: rgb(255, 0, 0);
+      @include font-family;
+      top: 65px;
+      right: 0;
+      transform: translateX(-150%);
+      background-color: $color4;
+      
+      
+      
+  }
+
+  .globalerr{
+    transition: 0.3s;
+    margin-block-start: 1px;
+    margin-block-end: 0px;
+    font-size: 10px;
+    position: absolute;
+    color: rgb(255, 0, 0);
+    @include font-family;
+    top: 65px;
+    right: 0;
+    transform: translateX(-20px);
+    background-color: $color4;
+    padding: 10px;
+    
+  }
+  
+  .Submit {
+    @include font-family;
+    margin-top: 30px;
+    width: 150px;
+    height: 25px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-style: italic;
+    background-color: $color4;
+    transition: 0.3s;
+  }
+  
+  .Submit:hover {
+    background-color: $color1;
+    color: $color4;
+    text-decoration: line-through red;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .copyrights {
+    @include font-family;
+    color: $color1;
+    margin-top: 80px;
+    font-style: italic;
+    opacity: 0.7;
+    position: absolute;
+    bottom:  15px;
+    margin: auto;
+    left: 20%;
+    transform: translate(-5%);
+  }
+
+
+  .top-space{
+    height: 40px;
+  }
+  .botton-space{
+    height: 40px;
+    width: 80%;
+    margin: auto;
+    @include font-family;
+    font-size: small;
+  }
+
+
+.slider{
+    width: 300px;
+    height: 400px;
+    margin-top: 50px;
+    background-color: aqua;
+    border-radius: 0px 20px 20px 0px  ;
+    
+}  
+
+.slider_img {
+    border-radius: 0px 20px 20px 0px  ;
+    height: auto;
+}
+
+.carousel.carousel-slider{
+    border-radius: 0px 20px 20px 0px  ;
+}
+
+.carousel.carousel-slider .control-arrow{
+    border-radius: 0px 20px 20px 0px  ;
+}
+
+.carousel .carousel-slider{
+    width: 300px;
+    height: 400px;
+}
+
+.carousel-status{
+    display: none;
+}
+
+.already{
+  font-size: 12px;
+  margin-top: 15px;
+  color: white;
+}
+
+.already > .link{
+  color: $color1;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width:640px) {
+    .slider {
+      display: none;
+        
+    }  
+
+   
+
+      .SignIn_Content {
+        border-radius: 20px 20px 20px 20px  ;
+        margin: 50px 10px 0px 10px;
+      }
+
+
+     
+}

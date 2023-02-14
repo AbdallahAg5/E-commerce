@@ -1,7 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import axiosInstance  from "../../api/axios";
+import { testUserAuth } from "../../redux/loginReducer";
+import DemoCarousel from "./Slider";
+import "../../style/register.scss"
 
 
 function Login() {
@@ -36,7 +39,7 @@ function Login() {
     }
 
    
-    const BtnHandler= async ()=>{
+    const HandleSubmit= async (e)=>{
         const {email,password}=values
           if (email.trim() == '' && password.trim() == '') {
               setErr({...err,passwordErr:'Password Required',emailErr:'Email Required'})
@@ -52,8 +55,8 @@ function Login() {
                 await axiosInstance.post(Login_Url,values)
                 .then((res)=> {
                   if (res.data?.name) {
-                    return navigate('/')
-                      
+                    dispatch(testUserAuth({name:res.data?.name,token:res.data?.token}))
+                    return navigate('/home')
                   }
                 })
                 
@@ -70,33 +73,28 @@ function Login() {
                  } 
              }
           }
-         
+          e.preventDefault()
     }
 
     console.log(err)
 
   return (
     <div>
-      <input
-        type={"email"}
-        name="email"
-        placeholder="Email"
-        autoComplete="off"
-        ref={EmailRef}
-        onChange={InputHandler}
-        />
-        {err.emailErr && err.emailErr}
-      <input
-        type={"password"}
-        name="password"
-        placeholder="Password"
-        autoComplete="off"
-        
-        onChange={InputHandler}
-      />
-       
-      <input type={"submit"} value="LogIn"  onClick={BtnHandler} />
-    </div>
+      <div className='SignIn_Container'>
+    <form className='SignIn_Content' onSubmit={HandleSubmit}>
+        <h1 className='SignIn'>Login Form</h1>
+        <div className="top-space" ></div>
+        <input type={'text'} className='TextInput' ref={EmailRef} placeholder='Email' onChange={InputHandler} name='email' />
+        <input type={'text'} className='TextInput' placeholder='Password' onChange={InputHandler} name='password' />
+        <div className=""></div>
+        <input type={'submit'} className='Submit' value='Login' />
+        <p className="already">Don't have an account ? <Link className="link" to={'/register'}>Register Now</Link></p>
+        <br />
+        <p className="copyrights">&copy;2022 All rights reserved.</p>
+    </form>
+    <DemoCarousel/> 
+</div>
+</div>
   );
 }
 

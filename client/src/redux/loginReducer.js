@@ -4,13 +4,14 @@ const LoginReducer = createSlice({
   name: "LoginReducer",
   initialState: {
       name:null,
-      isLoggedIn:false
+      token:null,
   },
   reducers: {
     testUserAuth: (state, action) => {
-      const {name,isLoggedIn}=action.payload
-       console.log(action.payload)
-      return {...state,name:name,isLoggedIn:isLoggedIn}
+      const {name,token}=action.payload
+      localStorage.setItem('token',token)
+      localStorage.setItem('user',name)
+      return {...state,name:localStorage.getItem('user'),token:localStorage.getItem('token')}
     }
   },
 });

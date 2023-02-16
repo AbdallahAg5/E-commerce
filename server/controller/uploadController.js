@@ -15,4 +15,22 @@ const upload = multer({
       storage:storage
 })
 
+uploadCotroller.post('/firstImg',VerifyToken,upload.single("firstImg"),async(req,res)=>{
+      try {
+            return res.status(200).json({msj:'image successfully upload'})
+      } catch (error) {
+             console.log(error.message)
+      }
+})
 
+
+uploadCotroller.post('/secondImg',VerifyToken,upload.single("secondImg"),async(req,res)=>{
+      try {
+            return res.status(200).json({msj:'image successfully upload'})
+      } catch (error) {
+             console.log(error.message)
+      }
+})
+
+
+module.exports = uploadCotroller

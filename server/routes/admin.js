@@ -2,9 +2,26 @@ const express=require('express');
 const productController = require('../controller/productController');
 const authController=require('../controller/adminAuthController')
 const VerifyToken=require('../middleware/auth')
+const multer = require("multer");
+const path = require('path');
+
 
 const Router=express.Router()
 
+
+// upload img code
+const imageStorage = multer.diskStorage({
+    // Destination to store image     
+    destination: (req,file,cb)=>{
+                 cb(null,'uploads') }, 
+    filename:async (req, file, cb) => {
+      const modifiedFilename = file.fieldname + '_' + Date.now() + path.extname(file.originalname);
+      await cb(null, modifiedFilename);
+            // file.fieldname is name of the field (image)
+            // path.extname get the uploaded file extension
+    }
+  });
+const upload = multer({ storage: imageStorage }) 
 
 
 Router
@@ -19,7 +36,7 @@ Router
 .route('/logout')
 .post((req,res)=>{
     res.clearCookie('token', { path: '/' });
-    return res.redirect('/admin/');
+    return res.redirect('/admin');
 })
 
 
@@ -27,7 +44,7 @@ Router
 Router
 .route('/dashboard')
 .get(VerifyToken,productController.getProduct)
-.post(VerifyToken,productController.createProduct)
+.post([VerifyToken, upload.single('img')],productController.createProduct)
 
 
 Router
@@ -41,6 +58,11 @@ Router
 Router
 .route('/add')
 .get(VerifyToken,productController.createProductPage)
+
+Router
+.route('/update/:id')
+.get(VerifyToken,productController.updateProductPage)
+.post([VerifyToken, upload.single('img')],productController.updateProduct)
 
 
 

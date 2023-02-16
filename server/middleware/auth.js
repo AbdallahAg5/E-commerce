@@ -10,6 +10,7 @@ const VerifyToken=(req,res,next)=>{
         next()
         
       } catch (err) {
+            console.log('no token')
             res.clearCookie=('token')  
             return res.redirect('/admin') 
       }

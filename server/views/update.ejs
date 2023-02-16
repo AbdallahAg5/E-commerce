@@ -1,23 +1,23 @@
 
 <body class="bg-dark text-white">
     <div class="container mt-5">
-        <form  id="form" method="POST" action="/admin/dashboard"  enctype="multipart/form-data">
+        <form  id="form" method="POST" action="/admin/update/<%= id %>" enctype="multipart/form-data">
             <div class="mb-3">
                 <label for="name" class="form-label">Product Name:</label>
-                <input type="text" class="form-control bg-dark text-white" id="name" name="name" />
+                <input type="text" class="form-control bg-dark text-white" id="name" name="name"  value="<%= name %>" />
             </div>
             <div class="mb-3">
                 <label for="desc" class="form-label">Description:</label>
-                <input type="text" class="form-control bg-dark text-white" id="description" name="description" />
+                <input type="text" class="form-control bg-dark text-white" id="description" name="description"  value="<%= description %>" />
             </div>
             <div class="mb-3">
                 <label for="price" class="form-label">Product Price:</label>
-                <input type="text" class="form-control bg-dark text-white" id="price" name="price" />
+                <input type="text" class="form-control bg-dark text-white" id="price" name="price"  value="<%= price %>" />
             </div>
 
             <div class="mb-3">
                 <label for="img">Product image:</label>
-                <input type="file"  name="img" id="img" />
+                <input type="file"  name="img" id="img"  value="<%= img %>" />
             </div>
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
@@ -29,4 +29,4 @@
   
 </body>
 
-</html>
+

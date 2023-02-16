@@ -1,4 +1,10 @@
 const ProductModel=require('../model/product_model')
+const multer = require("multer");
+const path = require('path');
+
+
+
+  
 
 
 
@@ -38,10 +44,13 @@ const ProductModel=require('../model/product_model')
      
      // create new product
     const  createProduct = async(req,res)=>{
-        const  {name,description,price,img}=  req.body
+        const {name,description,price}=  req.body
+       // const modifiedFilename = req.file.filename;  logs the modified filename
+       
+        
+       
         //confirm data
-        if(!name || !description || !img || !price){
-            console.log(req.body)
+        if(!name || !description || !price || !req.file){
             return res.status(400).json({message:'All field required'})
         }
 
@@ -50,7 +59,8 @@ const ProductModel=require('../model/product_model')
         if(duplicate){
             return res.status(409).json({message:'Duplicated product name'})
         }else{
-             const product=await ProductModel.create({...req.body})
+            const ImgProduct = req.file.filename;
+             const product=await ProductModel.create({...req.body,img:ImgProduct})
              await product.save()
 
          if (product) {
@@ -79,10 +89,46 @@ const ProductModel=require('../model/product_model')
   }
 
 
-  //update a product
-  
+       //update product view
+       const updateProductPage=async(req,res)=>{
+            const {params}=req
+            try {
+                let product= await ProductModel.find({'_id':params.id})
+                res.render("update", {
+                    id: product[0]._id,
+                    name: product[0].name,
+                    description: product[0].description,
+                    price: product[0].price,
+                    img: product[0].img,
+                  });
+
+            } catch (err) {
+                res.status(500).json(err.message)
+            }
+       }
+
+
+       //update product
+       const updateProduct=async(req,res)=>{
+        console.log(req.body)
+        var id = req.params.id;
+        console.log(id)
+        const ImgProduct = req.file.filename;
+       const product = await ProductModel.findByIdAndUpdate(id, {
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        img:ImgProduct,
+        });
+
+        console.log(product) 
+        res.redirect("/admin/dashboard");
+
+        }
 
 
 
 
-module.exports = {getProduct,createProduct,getSingleProduct,deleteProduct,createProductPage}
+
+
+module.exports = {getProduct,createProduct,getSingleProduct,deleteProduct,createProductPage,updateProductPage,updateProduct}

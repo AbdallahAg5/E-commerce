@@ -19,7 +19,7 @@ Router
 
 Router
 .route('/products')
-.get(VerifyToken,productController.getProduct)
+.get(productController.getProduct)
 .post(VerifyToken,productController.createProduct)
 
 

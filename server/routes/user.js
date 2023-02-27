@@ -2,7 +2,7 @@ const express=require('express');
 const Router=express.Router()
 const authController=require('../controller/userAuthController')
 const productController=require('../controller/productController')
-const VerifyToken=require('../middleware/auth')
+const VerifyToken=require('../middleware/userAuth')
 
 
 
@@ -19,8 +19,8 @@ Router
 
 Router
 .route('/products')
-.get(productController.getProduct)
-.post(VerifyToken,productController.createProduct)
+.get(productController.getProductForUser)
+
 
 
 Router

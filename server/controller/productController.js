@@ -1,22 +1,26 @@
 const ProductModel=require('../model/product_model')
-const multer = require("multer");
-const path = require('path');
 
 
 
-  
-
-
-
-
-    // get all products
-    const getProduct= async (req, res) => {
+    // get all products for admin
+    const getProductForAdmin= async (req, res) => {
         const products=await ProductModel.find().lean()
         if (products.length <= 0) {
             return res.status(400).json({message:'No products Found . '})
         }
         // else return all products
         res.render('dashboard',{products:products})
+     }
+
+     
+    // get all products for user
+    const getProductForUser= async (req, res) => {
+        const products=await ProductModel.find().lean()
+        if (products.length <= 0) {
+            return res.status(400).json({message:'No products Found . '})
+        }
+        // else return all products
+        return res.status(200).json({products:products})
      }
 
 
@@ -131,4 +135,11 @@ const path = require('path');
 
 
 
-module.exports = {getProduct,createProduct,getSingleProduct,deleteProduct,createProductPage,updateProductPage,updateProduct}
+module.exports = {getProductForUser,
+                 getProductForAdmin,
+                 createProduct,
+                 getSingleProduct,
+                 deleteProduct,
+                 createProductPage,
+                 updateProductPage,
+                 updateProduct}

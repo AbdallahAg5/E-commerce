@@ -14,12 +14,19 @@
                 <label for="price" class="form-label">Product Price:</label>
                 <input type="text" class="form-control bg-dark text-white" id="price" name="price" />
             </div>
-
             <div class="mb-3">
-                <label for="img">Product image:</label>
-                <input type="file"  name="img" id="img" />
+                <label for="formFile" class="form-label">Upload Image</label>
+                <input class="form-control bg-dark text-white" name="img" id="img" type="file" >
             </div>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <label for="formFile" class="form-label">Select In Stock</label>
+                <select class="form-select bg-dark text-white" id="floatingSelect" aria-label="Floating label select example">
+                  <option selected disabled>Select In Stock</option>
+                  <option value="1">In Stock</option>
+                  <option value="2">Out Of stock</option>
+                </select>
+         
+                
+            <button type="submit" class="btn btn-success mt-4">Submit</button>
         </form>
     </div>
 

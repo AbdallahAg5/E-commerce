@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import axiosInstance from '../../api/axios'
+import  { axiosClient } from '../../api/axios'
 import { testUserAuth } from "../../redux/loginReducer";
 import "../../style/register.scss"
+import Shop from "./Shop";
 import DemoCarousel from "./Slider";
 
 
@@ -44,7 +45,7 @@ function Register() {
           else{
              try {
                 setErr({...err,globalErr:''})   
-              await axiosInstance.post(REGISTER_URL,values)
+              await axiosClient.post(REGISTER_URL,values)
                 .then((res)=> {
                   dispatch(testUserAuth({name:res.data?.name,token:res.data?.token}))
                   return navigate('/home')
@@ -88,6 +89,7 @@ function Register() {
         <p className="copyrights">&copy;2022 All rights reserved.</p>
     </div>
     <DemoCarousel/> 
+    <Shop />
 </div>
   );
 }

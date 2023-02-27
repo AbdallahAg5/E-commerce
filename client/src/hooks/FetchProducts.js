@@ -1,20 +1,23 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { Navigate, useNavigate } from "react-router-dom";
-import axios from "../api/axios";
-import { testUserAuth } from "../redux/loginReducer";
+import  { axiosClient } from "../api/axios";
+import {getProducts, shopProducts} from '../redux/productsReducer'
 
 export const useProducts = () => {
   const dispatch=useDispatch()
-  const [products,setProducts] = useState([]);
-
+  const [products,setProducts]=useState()
   useEffect(() => {
     const Fetch = async () => {
       try {
-        await axios
+        await axiosClient
           .get("/user/products")
           .then((res) => {
-                console.log(res)
+            dispatch(getProducts(res.data.products))
+          if (localStorage.getItem('shop')) {
+            const Shoped=JSON.parse(localStorage.getItem('shop'))
+          
+            dispatch(shopProducts(Shoped))
+          }  
           });
       } catch (error) {
         console.log(error)

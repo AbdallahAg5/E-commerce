@@ -1,117 +1,81 @@
+h1 {
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
 
-  
- 
-  
-  .card_container{
-    position: relative;
-    
-     font-family: 'Poppins', sans-serif;
-  }
-  
-  .card_container .card{
-    position: relative;
-    width: 100%;
-    height: 330px;
-    background: #d0cfd3;
-    border-radius: 20px;
-    overflow: hidden;
-  }
-  
-  .card_container .card:before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #5f6163;
-    clip-path: circle(100px at 80% 20%);
-    transition: 0.5s ease-in-out;
-  }
-  
-  .card_container .card:hover:before{
-    clip-path: circle(250px at 80% -20%);
-  }
-  
-  .card_container .card:after{
-    content: 'Nike';
-    position: absolute;
-    top: 30%;
-    left: -20%;
-    font-size: 12em;
-    font-weight: 800;
-    font-style: italic;
-    color: rgba(82, 82, 82, 0.079)
-  }
-  
-  .card_container .card .imgBx{
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 10000;
-    width: 100%;
-    height: 220px;
-    transition: 0.5s;
-  }
-  
-  .card_container .card:hover .imgBx{
-    top: 0%;
-    transform: translateY(0%);
-      
-  }
-  
-  .card_container .card .imgBx img{
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(25deg);
-    width: 500px;
-    height: auto;
+.card {
+  position: relative;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  height: 380px;
+  overflow: hidden;
+  width: 250px;
+}
 
-  }
-  
-  .card_container .card .contentBx{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 100px;
-    text-align: center;
-    transition: 1s;
-    z-index: 10;
-  }
-  
-  .card_container .card:hover .contentBx{
-    height: 210px;
-  }
-  
-  .card_container .card .contentBx h2{
-    position: relative;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: #fff;
-    margin: 0;
-  }
-  
+.card > figure {
+  width: 90%;
+  margin: 20px auto 0 auto;
+}
 
-  
-  .card_container .card .contentBx a{
-    display: inline-block;
-    padding: 10px 20px;
-    background: #fff;
-    border-radius: 4px;
-    margin-top: 10px;
-    text-decoration: none;
-    font-weight: 600;
-    color: #111;
-    opacity: 0;
-    transform: translateY(50px);
-    transition: 0.5s;
-    margin-top: 0;
-  }
-  
-  .card_container .card:hover .contentBx a{
-    opacity: 1;
-    transform: translateY(0px);
-    transition-delay: 0.75s;
-    
-  }
+.card > figure > img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+}
+
+.details {
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 20px;
+  position: absolute;
+  top: 80%;
+  width: 100%;
+  transition: box-shadow .3s ease-in-out,
+              top .3s ease-in-out;
+}
+
+.card:hover .details {
+  box-shadow: 0 -5px 10px rgba(0,0,0,0.3);
+  top: 62%;
+}
+
+.details > .min-details {
+  margin-bottom: 20px;
+}
+
+.details > .min-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.details > .min-details > h1 > span {
+  color: #000000;
+  display: block;
+  font-size: .6rem;
+  font-weight: 500;
+  background-color: green;
+  padding: 1px 3px 1px 5px;
+  border-radius: 10px;
+  width:45px;
+  margin: auto;
+}
+
+
+.btn {
+  background-color: #192a56;
+  border-radius: 5px;
+  color: #FFF;
+  display: block;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: capitalize;
+  width: 100%;
+  transition: box-shadow .3s ease-in-out,
+              transform .3s ease-in-out;
+}
+
+.btn:hover {
+box-shadow: 0 5px 10px rgba(0,0,0,.3);
+transform: translateY(-2px);
+}

@@ -9,7 +9,6 @@ const corsOption = require("./config/allowedOrigins");
 require("dotenv").config();
 const AdminRoute = require("./routes/admin");
 const UserRoute = require("./routes/user");
-const uploadCotroller=require('./controller/uploadController')
 const { urlencoded } = require("body-parser");
 const expressLayouts=require('express-ejs-layouts')
 
@@ -40,7 +39,9 @@ app.use(session({
   }
  
 }))
-app.use( express.static( "uploads" ) );
+app.use(express.static("public/uploads"));
+app.use(express.static("public"));
+
 
 app.use(expressLayouts)
 app.set("view engine", "ejs");

@@ -60,6 +60,7 @@ const jwt=require('jsonwebtoken')
 
     //check existens of the email
     const getUser = await UserModel.find({email:email})
+    console.log(getUser[0])
     if (getUser.length > 0) {
       console.log(getUser)
      // compare password with hashed one 

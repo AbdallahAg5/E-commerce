@@ -1,7 +1,7 @@
 const express=require('express');
 const productController = require('../controller/productController');
 const authController=require('../controller/adminAuthController')
-const VerifyToken=require('../middleware/auth')
+const VerifyToken=require('../middleware/adminAuth')
 const multer = require("multer");
 const path = require('path');
 
@@ -13,7 +13,7 @@ const Router=express.Router()
 const imageStorage = multer.diskStorage({
     // Destination to store image     
     destination: (req,file,cb)=>{
-                 cb(null,'uploads') }, 
+                 cb(null,'public/uploads') }, 
     filename:async (req, file, cb) => {
       const modifiedFilename = file.fieldname + '_' + Date.now() + path.extname(file.originalname);
       await cb(null, modifiedFilename);
@@ -43,13 +43,13 @@ Router
 
 Router
 .route('/dashboard')
-.get(VerifyToken,productController.getProduct)
+.get(productController.getProductForAdmin)
 .post([VerifyToken, upload.single('img')],productController.createProduct)
 
 
 Router
 .route('/product/:name')
-.get(VerifyToken,productController.getSingleProduct)
+.get(productController.getSingleProduct)
 
 Router
 .route('/delete/:id')

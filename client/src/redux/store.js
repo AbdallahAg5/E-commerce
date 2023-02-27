@@ -15,5 +15,4 @@ const rootReducer=combineReducers({
 
 
 // create store 
-
 export default configureStore({ reducer: rootReducer })

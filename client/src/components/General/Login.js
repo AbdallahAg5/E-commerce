@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import axiosInstance  from "../../api/axios";
+import  { axiosClient }  from "../../api/axios";
 import { testUserAuth } from "../../redux/loginReducer";
 import DemoCarousel from "./Slider";
 import "../../style/register.scss"
@@ -52,11 +52,11 @@ function Login() {
           }
           else {
              try {
-                await axiosInstance.post(Login_Url,values)
+                await axiosClient.post(Login_Url,values)
                 .then((res)=> {
                   if (res.data?.name) {
                     dispatch(testUserAuth({name:res.data?.name,token:res.data?.token}))
-                    return navigate('/home')
+                     navigate('/home')
                   }
                 })
                 
@@ -81,17 +81,17 @@ function Login() {
   return (
     <div>
       <div className='SignIn_Container'>
-    <form className='SignIn_Content' onSubmit={HandleSubmit}>
+    <div className='SignIn_Content'>
         <h1 className='SignIn'>Login Form</h1>
         <div className="top-space" ></div>
         <input type={'text'} className='TextInput' ref={EmailRef} placeholder='Email' onChange={InputHandler} name='email' />
         <input type={'text'} className='TextInput' placeholder='Password' onChange={InputHandler} name='password' />
         <div className=""></div>
-        <input type={'submit'} className='Submit' value='Login' />
+        <input type={'submit'} className='Submit' value='Login' onClick={HandleSubmit} />
         <p className="already">Don't have an account ? <Link className="link" to={'/register'}>Register Now</Link></p>
         <br />
         <p className="copyrights">&copy;2022 All rights reserved.</p>
-    </form>
+    </div>
     <DemoCarousel/> 
 </div>
 </div>

@@ -8,7 +8,6 @@ import { useLocation } from 'react-router-dom';
 import Shop from './Shop';
 
 function PublicHome() {
-       const products=useProducts()
        const state=useSelector(state=>state.products)
      
       

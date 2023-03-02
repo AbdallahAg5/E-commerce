@@ -12,9 +12,15 @@ function Shop() {
         dispatch(ShowShop(false))  
     }
 
-
     const Delete=(name)=>{
         dispatch(DeleteProductFromShop(name))
+    }
+
+    if (state.showShop == true) {
+        document.body.style.overflowY='hidden'
+    }
+    else{
+        document.body.style.overflowY='auto'
     }
 
     const DisplayShopedProduct = () => {
@@ -26,7 +32,12 @@ function Shop() {
                     <img className='shop_card_img' src={"http://localhost:9000/"+state.products[i].img} alt="t-shirt" />
                     <div>
                         <h1>{state.products[i].name}</h1>
-                        <button onClick={()=>Delete(state.products[i].name)}>Delete</button>
+                        <button className='delete-btn' onClick={()=>Delete(state.products[i].name)}>Delete</button>
+                    </div>
+                    <div className='quantity'>
+                        <span className='add-btn' onClick={()=>Delete(state.products[i].name)}>+</span>
+                        <h1 className='quantity_number'>5</h1>
+                        <span className='sub-btn' onClick={()=>Delete(state.products[i].name)}>-</span>
                     </div>
                     </div>
                    )

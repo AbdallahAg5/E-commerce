@@ -1,0 +1,151 @@
+@import "./includes.scss";
+
+
+.search_container_false{
+width: 400px;
+height: 100vh;
+position: fixed;
+background-color: rgb(233, 233, 233);
+right: calc(-800vw + 400px);
+top: 0;
+transition: 0.3s;
+z-index: 100;
+
+}
+
+
+.search_container_true{
+width: 400px;
+height: 100vh;
+position: fixed;
+background-color: rgb(233, 233, 233);
+right: 0;
+top: 0;
+transition: 0.3s;
+z-index: 100;
+overflow-y: hidden;
+}
+
+
+.search_blur_true{
+position: absolute;
+top: 0;
+width: calc(100% - 400px);
+height: 100vh;
+background: radial-gradient(rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.448) 10%);
+opacity: 0;
+backdrop-filter: blur(7px);
+transition: 1s;
+z-index: 100;
+}
+
+.search_blur_true{
+height: 100vh;
+position: absolute;
+top: 0;
+width: calc(100% - 400px);
+background: radial-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.467) 10%);
+opacity: 1;
+backdrop-filter: blur(7px);
+transition: 1s;
+z-index: 100;
+}
+
+
+.search_top{
+width: 90%;
+margin: 20px auto;
+display: flex;
+justify-content: space-between;
+}
+
+
+.search_top > h3 {
+font-weight: bold;
+
+}
+
+.search_top > .close_search > svg{
+font-weight: bold;
+font-size: xx-large;
+cursor: pointer;
+
+}
+
+
+.search_input{
+margin: 10px 10%;
+padding: 10px 8px ;
+width: 80%;
+outline-color: rgb(80, 80, 206);
+@include font-family;
+
+}
+
+
+
+.search_container_true > .shop_card{
+    width: 95%;
+    height: 100px;
+    margin: 10px auto;
+    background:radial-gradient(#FFF 10% ,#ffffff5c) no-repeat ;
+    box-shadow: 0 5px 10px rgba(0,0,0,.3);
+    display: flex;
+    position: relative;
+    @include font-family;
+    cursor: pointer;
+
+}
+
+.search_container_true .shop_card > div > h1{
+    margin-top:7px;
+}
+
+
+.search_container_true > .shop_card > .shop_card_img{
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    padding-right: 25px;
+}
+
+
+.search_container_true > div > div > .product_type{
+    color: grey;
+    @include font-family;
+    font-size: xx-small;
+}
+
+
+.search_container_true > div > div > .price{
+    color: grey;
+    @include font-family;
+    font-size: small;
+    margin-top: 15px;
+}
+
+
+.shop_card > .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100px;
+    width: 75px;
+    background-color: rgba(0, 0, 0, 0.419);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.shop_card:hover  .overlay {
+    opacity: 1;
+    transition: 0.3s;
+}
+
+
+.shop_card:hover   {
+   color: blue;
+}
+
+
+
+

@@ -29,7 +29,7 @@ const jwt=require('jsonwebtoken')
           //hash password
           const hashPassword=await bcrypt.hash(UserPass,10) // the 10 means the complexity of hashing 
           const userObject={name,"password":hashPassword,email}
-
+           console.log(userObject)
           //Create and store user 
           const user=await UserModel.create(userObject)
           await user.save()
@@ -70,6 +70,7 @@ const jwt=require('jsonwebtoken')
            // right here i create the token 
           const token=jwt.sign({...getUser[0]},process.env.JWS_SECRET,{expiresIn:'5h'})
           res.cookie('token',token,{httpOnly:true})
+          console.log(getUser[0].fullName)
           return res.status(200).json({name:getUser[0].fullName,token:token})
        } else {
         return  res.status(401).json({message:'Email/Password Wrong'}) // 401 Unauthorized

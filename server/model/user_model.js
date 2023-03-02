@@ -3,7 +3,7 @@ const mongoose=require('mongoose')
 // new schema + config fields 
 const UserSchema=new mongoose.Schema({
     
-      fullName:{
+     name:{
         type:String,
         require:true
       },

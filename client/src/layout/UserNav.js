@@ -8,10 +8,11 @@ function UserNav() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(localStorage.key(0))
     if (
-      localStorage.length != 2 &&
-      !localStorage.key(0) &&
-      !localStorage.key(1)
+      localStorage.length <= 2 &&
+      !localStorage.key(1) &&
+      !localStorage.key(2)
     ) {
       navigate("/login");
     } else {

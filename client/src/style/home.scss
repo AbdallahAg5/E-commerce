@@ -1,6 +1,6 @@
 .home_container .top_div{
     height: 200px;
-    width: 100%;  
+    width: auto;  
 }
 
 
@@ -16,6 +16,6 @@
     padding: 30px 10px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  
+     gap: 15px;
     justify-content: center;
 }

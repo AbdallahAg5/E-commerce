@@ -15,7 +15,7 @@ const ProductModel=require('../model/product_model')
      
     // get all products for user
     const getProductForUser= async (req, res) => {
-        const products=await ProductModel.find().lean()
+        const products=await ProductModel.find({},{createdAt:0,updatedAt:0,_id:0}).lean()
         if (products.length <= 0) {
             return res.status(400).json({message:'No products Found . '})
         }
@@ -48,13 +48,13 @@ const ProductModel=require('../model/product_model')
      
      // create new product
     const  createProduct = async(req,res)=>{
-        const {name,description,price}=  req.body
+        const {name,description,price,inStock}=  req.body
        // const modifiedFilename = req.file.filename;  logs the modified filename
        
         
        
         //confirm data
-        if(!name || !description || !price || !req.file){
+        if(!name || !description || !price || !req.file || !inStock){
             return res.status(400).json({message:'All field required'})
         }
 
@@ -104,6 +104,7 @@ const ProductModel=require('../model/product_model')
                     description: product[0].description,
                     price: product[0].price,
                     img: product[0].img,
+                    inStock:product[0].inStock
                   });
 
             } catch (err) {
@@ -123,6 +124,7 @@ const ProductModel=require('../model/product_model')
         description: req.body.description,
         price: req.body.price,
         img:ImgProduct,
+        inStock:req.body.inStock
         });
 
         console.log(product) 

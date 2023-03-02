@@ -8,6 +8,7 @@ const LoginReducer = createSlice({
   },
   reducers: {
     testUserAuth: (state, action) => {
+      console.log(action.payload)
       const {name,token}=action.payload
       localStorage.setItem('token',token)
       localStorage.setItem('user',name)

@@ -9,11 +9,16 @@ const ProductReducer=createSlice({
                 return {...state,products:payload}
           },
           shopProducts:(state,{payload})=>{
-            const shopProducts=localStorage.setItem('shop',JSON.stringify(state.shop.concat(payload)))
-            if (Array.isArray(payload)) {
-                  return {...state,shop:state.shop.concat(...payload)}
-            }
-            else{
+                 const {shop}=state
+                 
+                // testing if shoped product are comming from the localstorage to destruct the payload 
+                if (Array.isArray(payload) ) {
+                console.log(JSON.stringify(localStorage.getItem('shop').includes(payload)) )
+                       return {...state, shop: [...new Set([...state.shop, ...payload])]};
+                  }
+                  else{
+                       
+                  localStorage.setItem('shop',JSON.stringify(state.shop.concat(payload)))
                   return {...state,shop: state.shop.concat(payload)}
             }
           },

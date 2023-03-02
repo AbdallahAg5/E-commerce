@@ -54,7 +54,9 @@ function Login() {
              try {
                 await axiosClient.post(Login_Url,values)
                 .then((res)=> {
+                  console.log(res)
                   if (res.data?.name) {
+                    console.log('hi')
                     dispatch(testUserAuth({name:res.data?.name,token:res.data?.token}))
                      navigate('/home')
                   }

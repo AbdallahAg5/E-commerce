@@ -12,12 +12,12 @@ export const useProducts = () => {
         await axiosClient
           .get("/user/products")
           .then((res) => {
-            dispatch(getProducts(res.data.products))
-          if (localStorage.getItem('shop')) {
-            const Shoped=JSON.parse(localStorage.getItem('shop'))
-          
-            dispatch(shopProducts(Shoped))
-          }  
+            dispatch(getProducts(res.data.products))   
+            if (localStorage.getItem('shop') && JSON.parse(localStorage.getItem('shop')).length > 0 ) {
+              const Shoped=JSON.parse(localStorage.getItem('shop'))
+              dispatch(shopProducts(Shoped))
+            }  
+           
           });
       } catch (error) {
         console.log(error)

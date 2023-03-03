@@ -14,7 +14,7 @@ function PublicNav() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const state=useSelector(state=>state.products.shop)
+  const state=useSelector(state=>state.products)
   const [search,setSearch]=useState(false)
 
   useEffect(() => {
@@ -31,6 +31,9 @@ function PublicNav() {
       navigate("/home");
     } 
   }, []);
+
+
+
 
 
   const HandleShop=()=>{
@@ -51,7 +54,8 @@ function PublicNav() {
                 <ul className='ul-public'>
                     <Link  to={'/'} ><li>Home</li></Link>
                     <Link  to={'/register'} ><li>Register</li></Link>
-                    <Link  to={location.pathname} onClick={HandleShop} ><li>{Shop}<span className="shop_number">{state.length}</span></li></Link>
+                    <Link  to={'/contact'} ><li>Contact</li></Link>
+                    <Link  to={location.pathname} onClick={HandleShop} ><li>{Shop}<span className="shop_number">{state?.shop?.length}</span></li></Link>
                     <button onClick={SearchHandler}>{Search}</button>
                 </ul>
              </nav>

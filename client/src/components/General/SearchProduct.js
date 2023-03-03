@@ -16,8 +16,7 @@ function SearchProduct({search,setSearch}) {
       setKeyword(e.target.value);
     };
   
-    console.log(searched);
-
+  
   return (
      <>
          <div className={search ? 'search_blur_true' : 'search_blur_false'} ></div>
@@ -27,8 +26,8 @@ function SearchProduct({search,setSearch}) {
                   <span className='close_search' onClick={CloseSearch}>{Xmark2}</span>
             </div>
             <input type={'text'} className='search_input' placeholder='Enter a keyword...' onChange={SearchHandler} />
-             {keyword !=''  &&  searched?.map((state)=> (
-                   <div className='shop_card'>
+             {keyword !=''  &&  searched?.map((state,i)=> (
+                   <div key={i} className='shop_card'>
                     <div className='overlay' ></div>
                    <img className='shop_card_img' src={"http://localhost:9000/"+state.img} alt="t-shirt" />
                    <div>

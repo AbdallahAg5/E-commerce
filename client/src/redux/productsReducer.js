@@ -13,7 +13,7 @@ const ProductReducer=createSlice({
                  
                 // testing if shoped product are comming from the localstorage to destruct the payload 
                 if (Array.isArray(payload) ) {
-                console.log(JSON.stringify(localStorage.getItem('shop').includes(payload)) )
+                 //console.log(JSON.stringify(localStorage.getItem('shop').includes(payload)) )
                        return {...state, shop: [...new Set([...state.shop, ...payload])]};
                   }
                   else{
@@ -25,14 +25,27 @@ const ProductReducer=createSlice({
           ShowShop:(state,{payload})=>{
                   return {...state,showShop:payload}   
           },
+
+          AddQuantity:(state,{payload})=>{
+            localStorage.setItem('shop',JSON.stringify(state.shop.map((e) => e.name === payload ? { ...e, quantity: e.quantity + 1 } : e)))
+             return  {...state, shop: state.shop.map((e) => e.name === payload ? { ...e, quantity: e.quantity + 1 } : e)}
+        
+          },
+
+          SubtractQuantity:(state,{payload})=>{
+            localStorage.setItem('shop',JSON.stringify(state.shop.map((e) => e.name === payload ? { ...e, quantity: e.quantity - 1 } : e)))
+            return  {...state, shop: state.shop.map((e) => e.name === payload ? { ...e, quantity: e.quantity - 1 } : e)}
+          },
+
           DeleteProductFromShop:(state,{payload})=>{
-            const shopProducts=localStorage.setItem('shop',JSON.stringify(state.shop.filter((e)=> e != payload)))
-            return {...state,shop:state.shop.filter((e)=> e != payload)}   
-    }
+            console.log(payload)
+            const shopProducts=localStorage.setItem('shop',JSON.stringify(state.shop.filter((e)=> e.name != payload)))
+            return {...state,shop:state.shop.filter((e)=> e.name != payload)}   
+          }
     }
 })
 
 
 
-export const {getProducts,shopProducts,ShowShop,DeleteProductFromShop} = ProductReducer.actions
+export const {getProducts,shopProducts,ShowShop,DeleteProductFromShop,AddQuantity,SubtractQuantity} = ProductReducer.actions
 export default ProductReducer.reducer

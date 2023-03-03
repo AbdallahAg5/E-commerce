@@ -21,6 +21,10 @@ const ProductsSchema = new mongoose.Schema({
         type:String,
         require:true
     },
+    quantity:{
+        type:Number,
+        default:0
+    },
     inStock:{
         type:String,
         require:true,

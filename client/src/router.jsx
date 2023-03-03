@@ -5,6 +5,7 @@ import PublicNav from "./layout/PublicNav";
 import UserNav from "./layout/UserNav"
 import Home from "./components/User/Home";
 import PublicHome from "./components/General/Home";
+import Contact from "./components/General/Contact";
 
 const router=createBrowserRouter([
       {
@@ -32,6 +33,10 @@ const router=createBrowserRouter([
             {
                path:'/',
                element:<PublicHome />
+            },
+            {
+               path:'/contact',
+               element:<Contact />
             }
          ]
 

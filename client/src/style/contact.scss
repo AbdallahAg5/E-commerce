@@ -1,0 +1,70 @@
+@import "./includes.scss";
+
+.contact_container{
+    background-color: rgb(208, 208, 208);
+    display: flex;
+    
+}
+
+svg {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+.contact_form > .contact_title {
+     text-align: left;
+     margin-left: 0;
+     left: 0;
+     align-self: flex-start;
+     margin-left: 55px;
+     margin-bottom: 5px;
+     color: rgb(80, 80, 206);
+     font-size: xx-large;
+     text-decoration: underline;
+} 
+
+
+.contact_container > .contact_form{
+        width: 60%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        outline-color: rgb(80, 80, 206);
+        @include font-family;
+        
+}
+
+
+.contact_container > .contact_form > input[type="text"],input[type="email"],textarea{
+        width: 90%;
+        padding: 10px 10px;
+        outline-color: rgb(80, 80, 206);
+        align-self: flex-end;
+}
+
+.contact_container > .contact_form > textarea{
+    resize: none;
+}
+
+
+.contact_container > .contact_form > input[type="submit"]{
+     width: 200px;
+     height: 35px;
+     background-color: rgb(80, 80, 206);
+     margin: 20px auto;
+     transform: translate(10%);
+     cursor: pointer;
+     color: aliceblue;
+     transition: 0.3s;
+
+}
+
+
+.contact_container > .contact_form > .submit_btn:hover{
+    transition: 0.3s;
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+    background-color:rgba(80, 80, 206, 0.805) ;
+}
+
+  

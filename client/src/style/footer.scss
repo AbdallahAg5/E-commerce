@@ -40,41 +40,34 @@
 }
 
 
-.footer > .ul-public > a{
-     list-style-type: none;
-     margin-left: 0px;
-     margin-top: 0px;
-     text-decoration: none;
-     color: white;
-
-       
+.footer > table {
+    width: 30%;
+    text-align: start;
+    font-size: small;
 }
 
 
-.footer > .ul-public > a > li{
-   margin-top: 5px;
-   margin-bottom: -15px;
-      
+.footer > table > tbody > tr > td:nth-child(1) {
+    width: 90px;
 }
 
 
 
 
+// .shop_number{
+//     background-color: red;
+//   color: white;
+//   padding:1px 1px;
+//   font-size: x-small;
+//   position: absolute;
+//   top: 25px;
+//   right: 30px;
+//   border-radius: 50%;
+//   width: 15px;
+//   height: 15px;
+//   text-align: center;
 
-.shop_number{
-    background-color: red;
-  color: white;
-  padding:1px 1px;
-  font-size: x-small;
-  position: absolute;
-  top: 25px;
-  right: 30px;
-  border-radius: 50%;
-  width: 15px;
-  height: 15px;
-  text-align: center;
-
-}
+// }
 
 
 @media (max-width:450px) {

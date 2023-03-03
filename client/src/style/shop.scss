@@ -1,3 +1,6 @@
+@import "./includes.scss";
+
+
 .shop_container{
     height: 100vh;
     width: 100%;
@@ -12,6 +15,28 @@
 
      
 }
+
+
+.card_top{
+    width: 90%;
+    margin: 15px auto;
+    display: flex;
+    justify-content: space-between;
+    }
+    
+    
+    .card_top > h3 {
+    font-weight: bold;
+    text-decoration: underline;
+    
+    }
+    
+    .card_top > .close_search > svg{
+    font-weight: bold;
+    font-size: xx-large;
+    cursor: pointer;
+    
+    }
 
 
 
@@ -40,7 +65,7 @@
     height: 100vh;
     width: 30%;
     background-color: rgb(186, 186, 186);
-    padding-top: 50px;
+    padding-top: 10px;
 }
 
 .shop_cards_container::-webkit-scrollbar {
@@ -67,11 +92,13 @@
     box-shadow: 0 5px 10px rgba(0,0,0,.3);
     display: flex;
     position: relative;
+    
 
 }
 
 .shop_card > div > h1{
     margin-top: 15px;
+    @include font-family;
 }
 
 
@@ -103,7 +130,8 @@
 }
 
 .quantity > .quantity_number{
-    margin: 0px 15px;
+    margin: 4px 15px;
+    @include font-family;
 }
 
 .quantity > .add-btn,.sub-btn{
@@ -117,7 +145,9 @@
     margin-top: 5px;
     font-weight: bold;
     padding:0px 2px 5px 2px;
+    cursor: pointer;
 }
+
 
 
 
@@ -126,4 +156,17 @@
     width: 100px;
     object-fit: cover;
     padding-right: 10px;
+}
+
+
+
+.no_products{
+    text-align: center;
+    margin-top: 80%;
+    @include font-family;
+    font-style: italic;
+    font-size: xx-large;
+    opacity: 0.2;
+
+    
 }

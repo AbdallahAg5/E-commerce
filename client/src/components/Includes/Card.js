@@ -12,19 +12,20 @@ function Card({products}) {
   }
 
   const SetDisabled=()=>{
-    return state.includes(name);
+    return state.some((e) => e.name === name);
   }
+
   return (
-    <div class="card">
+    <div className="card">
     <figure>
       <img src={"http://localhost:9000/"+img} alt="t-shirt" />
     </figure>
-    <section class="details">
-      <div class="min-details">
+    <section className="details">
+      <div className="min-details">
         <h1>{name} <span style={inStock === "In Stock" ? {backgroundColor:'green',width:'45px'} :{backgroundColor:'red',width:'70px'} }>{inStock}</span></h1>
-        <h1 class="price">${price}</h1>
+        <h1 className="price">${price}</h1>
       </div>
-      <button  disabled={SetDisabled()} class="btn" onClick={()=>AddToCard(name)}>add to cart</button>
+      <button  disabled={SetDisabled()} className="btn" onClick={()=>AddToCard({name:name,quantity:1})}>add to cart</button>
     </section>
   </div>
   )
